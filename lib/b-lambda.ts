@@ -1,8 +1,8 @@
-import nodejs from "aws-cdk-lib/aws-lambda-nodejs";
+import {aws_lambda_nodejs} from "aws-cdk-lib";
 import {Stack} from "./b-cdk";
 
-export class NodejsFunction extends nodejs.NodejsFunction {
-    constructor(scope: Stack, id: string, props: nodejs.NodejsFunctionProps) {
+export class NodejsFunction extends aws_lambda_nodejs.NodejsFunction {
+    constructor(scope: Stack, id: string, props: aws_lambda_nodejs.NodejsFunctionProps) {
         super(scope, id, {
             ...props,
             role: scope.serviceRole,
