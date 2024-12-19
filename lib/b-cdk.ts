@@ -1,6 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from 'constructs';
 import {IRole, Role, ServicePrincipal} from "aws-cdk-lib/aws-iam";
+import {Tags} from "aws-cdk-lib";
 
 export class Stack extends cdk.Stack {
     serviceRole: IRole
@@ -14,5 +15,6 @@ export class Stack extends cdk.Stack {
             assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
             description: `Service role for ${this.stackName}`
         })
+        Tags.of(this.serviceRole).add('Application', `${this.stackName}`)
     }
 }
