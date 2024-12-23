@@ -15,7 +15,7 @@ export class Stack extends cdk.Stack {
             assumedBy: new ServicePrincipal('lambda.amazonaws.com'),
             description: `Service role for ${this.stackName}`,
             managedPolicies: [
-                ManagedPolicy.fromManagedPolicyName(this, 'LambdaBasicExecutionRole', "AWSLambdaBasicExecutionRole")
+                ManagedPolicy.fromAwsManagedPolicyName("AWSLambdaBasicExecutionRole"),
             ]
         })
         Tags.of(this.serviceRole).add('Application', `${this.stackName}`)
